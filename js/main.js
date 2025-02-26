@@ -52,7 +52,7 @@ window.addEventListener('load', function () {
 
 
 
-
+// メニュー
 // ボタンを定数に定義
 const btn = document.getElementById('menu_btn');
 
@@ -109,7 +109,6 @@ window.addEventListener('scroll', function () {
 
 
 // モーダル
-
 // 定数定義
 // モーダル
 const modal = document.querySelectorAll('.modal');
