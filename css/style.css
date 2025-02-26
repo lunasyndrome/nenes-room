@@ -1,0 +1,930 @@
+@charset "utf-8";
+
+/* 色設定 */
+:root {
+  --color_base: #F4F5F5;
+  --color_base_rgb: 244, 255, 255;
+  --color_text: #223C5A;
+  --color_text_rgb: 34, 60, 90;
+  --color_sub1: #b4bdc8;
+  --color_sub1_rgb: 180, 189, 200;
+  --color_sub2: #1C88AD;
+  --color_sub2_rgb: 28, 136, 173;
+  --color_sub3: #24CFDC;
+  --color_sub3_rgb: 36, 207, 220;
+}
+
+/* 全体設定 */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* 文字 */
+body {
+  color: var(--color_text);
+  font-size: 16px;
+  font-family: "Zen Old Mincho", serif;
+}
+
+/* 背景画像 */
+body::before {
+  content: "";
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  z-index: -20;
+  background: url(../img/bg.png) no-repeat top center/cover;
+}
+
+/* リンク */
+a {
+  text-decoration: underline 1px solid;
+  color: var(--color_sub2);
+  transition: color ease-in 100ms;
+}
+
+a:hover {
+  color: var(--color_sub3);
+  transition: color ease-in 100ms;
+}
+
+/* コンテンツ */
+/* ヘッダー */
+header {
+  height: 100vh;
+  font-family: "Roboto Slab", serif;
+  flex-flow: column;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+h1 {
+  font-size: 60px;
+  font-family: "Roboto Slab", serif;
+  font-weight: bold;
+  color: rgba(var(--color_base_rgb), 0.95);
+  text-align: center;
+  z-index: 10;
+  letter-spacing: 0.01em;
+}
+
+/* 円形文字 */
+.circleText {
+  z-index: -1;
+  width: 70%;
+  margin: auto;
+  overflow: visible;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  animation: rotation 60s linear infinite;
+}
+
+.circleText .circle {
+  fill: none;
+}
+
+.circleText .text {
+  fill: rgba(var(--color_text_rgb), 0.7);
+  font-size: 12px;
+  letter-spacing: 0.07em;
+}
+
+/* アニメーション設定 */
+@keyframes rotation {
+  0% {
+    transform: rotate(0);
+  }
+
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+/* メニュー */
+
+/* ボタン */
+nav #menu_btn {
+  display: block;
+  background: url(../img/menu_open.png) no-repeat center center/contain;
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 60;
+  opacity: 0.9;
+  filter: drop-shadow(0 0 3px rgba(var(--color_sub1_rgb), 0.5));
+  transition: all ease-in 100ms;
+}
+
+nav #menu_btn.open {
+  background: url(../img/menu_close.png) no-repeat center center/contain;
+  transition: all ease-out 100ms;
+}
+
+/* リスト */
+nav ul {
+  position: fixed;
+  top: 80px;
+  right: 15px;
+  z-index: 50;
+  transform: translateX(100vw);
+}
+
+nav li {
+  display: block;
+  text-align: right;
+  margin-bottom: 5px;
+  transition: all ease-in 300ms;
+}
+
+/* アニメーション用 */
+nav li.open {
+  transform: translateX(-100vw);
+  transition: all ease-out 300ms;
+}
+
+nav a {
+  text-transform: uppercase;
+  background: var(--color_text);
+  color: var(--color_base);
+  display: inline-block;
+  padding: 0 10px;
+  text-decoration: none;
+  font-family: "Roboto Slab", serif;
+  font-size: 30px;
+  opacity: 0.9;
+}
+
+
+/* メイン */
+/* セクションの背景色と余白 */
+#profile_sec,
+#works_sec,
+#skill_sec,
+#contact_sec {
+  background: rgba(var(--color_base_rgb), 0.95);
+  margin: 0 5% 100px;
+  padding: 30px 5% 50px;
+  border-radius: 20px;
+}
+
+/* 共通大見出し */
+h2 {
+  font-size: 36px;
+  font-family: "Roboto Slab", serif;
+  position: relative;
+  text-align: center;
+  margin-bottom: 15px;
+  z-index: 1;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 90%;
+  height: 10px;
+  z-index: -1;
+  transform: translate(0, -12px);
+  background: rgba(var(--color_sub1_rgb), 0.6);
+}
+
+
+/* profile_sec */
+
+/* 余白 */
+#profile_sec p {
+  margin-bottom: 10px;
+}
+
+/* アイコン */
+#profile_sec .my_icon {
+  text-align: center;
+}
+
+#profile_sec .my_icon img {
+  width: 30%;
+  border-radius: 50%;
+}
+
+/* 名前部分 */
+#profile_sec h3 {
+  font-family: "Roboto Slab", serif;
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+#profile_sec h3 span {
+  font-family: "M PLUS 1p", serif;
+  font-size: 16px;
+}
+
+
+
+
+/* works_sec */
+
+/* 余白 */
+#works_sec section {
+  margin-bottom: 60px;
+}
+
+/* 見出し */
+#works_sec h3 {
+  font-family: "Roboto Slab", serif;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* 余白 */
+#works_sec section p {
+  margin-bottom: 10px;
+}
+
+/* 画像の高さ指定 */
+#works_sec section p:nth-of-type(1) {
+  height: 250px;
+}
+
+/* 画像のサイズと切り抜き方指定 */
+#works_sec img {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  object-position: center 0%;
+}
+
+/* ボタンとリンク */
+/* 横並び */
+#works_sec .button_wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* ボタン本体 */
+#works_sec .button_wrap button,
+#works_sec .button_wrap a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 30px;
+  color: var(--color_base);
+  background: rgba(var(--color_text_rgb), 0.8);
+  transition: all 100ms;
+  position: relative;
+  z-index: 10;
+}
+
+/* ホバー時アニメ */
+#works_sec .button_wrap button::after,
+#works_sec .button_wrap a::after {
+  content: "";
+  display: block;
+  background: rgba(var(--color_sub3_rgb), 0.8);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 0%;
+  height: 100%;
+}
+
+#works_sec .button_wrap button:hover::after,
+#works_sec .button_wrap a:hover::after {
+  width: 100%;
+  transition: 200ms ease-out;
+}
+
+/* 文字の前のアイコン */
+#works_sec .button_wrap button:nth-child(1)::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+  background: url(../img/icon_outline.png) no-repeat center center/contain;
+}
+
+#works_sec .button_wrap a:nth-child(2)::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+  background: url(../img/icon_demo.png) no-repeat center center/contain;
+}
+
+#works_sec .button_wrap a:nth-child(3)::before {
+  content: "";
+  width: 15px;
+  height: 15px;
+  margin-right: 4px;
+  background: url(../img/icon_github.png) no-repeat center center/contain;
+}
+
+/* リンクの共通設定の打ち消し */
+#works_sec .button_wrap a {
+  text-decoration: none;
+  color: var(--color_base);
+}
+
+
+
+/* skill_sec */
+
+/* 余白 */
+#skill_sec section {
+  margin-bottom: 60px;
+}
+
+/* 見出し */
+#skill_sec h3 {
+  font-family: "Roboto Slab", serif;
+  font-size: 28px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* 各項目のマーク */
+#skill_sec section h3::before {
+  content: "";
+  width: 35px;
+  height: 35px;
+  display: block;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+#skill_sec section:nth-of-type(1) h3::before {
+  background: url(../img/icon_html.png) no-repeat center center/contain;
+}
+
+#skill_sec section:nth-of-type(2) h3::before {
+  background: url(../img/icon_css.png) no-repeat center center/contain;
+}
+
+#skill_sec section:nth-of-type(3) h3::before {
+  background: url(../img/icon_js.png) no-repeat center center/contain;
+}
+
+#skill_sec section:nth-of-type(4) h3::before {
+  background: url(../img/icon_java.png) no-repeat center center/contain;
+}
+
+#skill_sec section:nth-of-type(5) h3::before {
+  background: url(../img/icon_php.png) no-repeat center center/contain;
+}
+
+#skill_sec section:nth-of-type(6) h3::before {
+  background: url(../img/icon_others.png) no-repeat center center/contain;
+}
+
+/* 箇条書き中身 */
+#skill_sec li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 3px;
+}
+
+/* チェックマーク */
+#skill_sec li::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  display: block;
+  margin-right: 4px;
+  background: url(../img/icon_check.png) no-repeat center center/contain;
+  align-self: flex-start;
+  flex-shrink: 0;
+}
+
+/* 注釈文字 */
+#skill_sec p {
+  font-family: "M PLUS 1p", serif;
+  text-align: end;
+  font-size: 15px;
+}
+
+
+
+/* contact_sec */
+
+/* 余白と、spanをブロックにしているので横並び */
+#contact_sec p {
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+}
+
+/* 必須の四角 */
+#contact_sec span {
+  display: block;
+  background: var(--color_sub2);
+  color: var(--color_base);
+  border-radius: 20%;
+  padding: 3px;
+  margin-right: 3px;
+  font-size: 12px;
+  font-family: "M PLUS 1p", serif;
+  font-weight: 300;
+}
+
+/* 入力欄 */
+#contact_sec input {
+  display: block;
+  background: rgba(var(--color_sub1_rgb), 0.4);
+  width: 100%;
+  height: 32px;
+  padding: 5px;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+#contact_sec textarea {
+  display: block;
+  background: rgba(var(--color_sub1_rgb), 0.4);
+  width: 100%;
+  height: 100px;
+  padding: 5px;
+  line-height: 1.2;
+  margin-bottom: 15px;
+}
+
+/* 送信ボタン */
+#contact_sec button {
+  display: flex;
+  justify-content: center;
+  background: var(--color_text);
+  color: var(--color_base);
+  align-items: center;
+  margin: 0 auto;
+  width: 100px;
+  height: 50px;
+  position: relative;
+  transition: all 100ms;
+  position: relative;
+  z-index: 10;
+}
+
+/* ホバー時アニメ */
+#contact_sec button::after {
+  content: "";
+  display: block;
+  background: var(--color_sub3);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 0%;
+}
+
+#contact_sec button:hover::after {
+  height: 100%;
+  transition: 200ms ease-out;
+}
+
+/* フッター */
+footer {
+  font-family: "Roboto Slab", serif;
+  padding: 30px;
+  text-align: center;
+  color: var(--color_base);
+}
+
+/* ローディング画面 */
+#loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background: var(--color_text);
+  transition: ease-in 300ms;
+}
+
+#loading.close {
+  transition: ease-out 300ms;
+  opacity: 0;
+  z-index: -20;
+}
+
+#loading .typing {
+  font-size: 60px;
+  font-family: "Roboto Slab", serif;
+  font-weight: bold;
+  color: rgba(var(--color_base_rgb), 0.95);
+  display: flex;
+  justify-content: center;
+}
+
+#loading .typing p {
+  opacity: 0;
+  transition: all 300ms;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 0;
+}
+
+/* ちらつき防止 */
+body {
+  opacity: 0;
+}
+
+
+/* スクロール時表示アニメーション */
+.js_scroll_fade {
+  transform: translate(0, 30px);
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}
+
+.is-animated {
+  transform: translate(0, 0);
+  opacity: 1;
+  transition: opacity 300ms, transform 300ms;
+}
+
+
+/* モーダル */
+
+.modal {
+  padding: 5%;
+  border: none;
+  background: var(--color_base);
+  height: 80vh;
+  transition: all 300ms;
+}
+
+.modal::backdrop {
+  background: #000;
+  opacity: 0.8;
+}
+
+.modal .close_button {
+  display: block;
+  width: 40px;
+  height: 5px;
+  position: fixed;
+  z-index: 50;
+  margin: 0;
+  padding: 0;
+  top: 30px;
+  right: 20px;
+  border: initial;
+  border-radius: initial;
+  background-color: var(--color_base);
+  transform: rotate(45deg);
+  cursor: pointer;
+}
+
+.modal .close_button::before {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 5px;
+  background-color: var(--color_base);
+  transform: rotate(90deg);
+}
+
+.modal h3 {
+  font-family: "Roboto Slab", serif;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.modal p {
+  margin-bottom: 20px;
+}
+
+.modal dt {
+  margin-bottom: 5px;
+}
+
+.modal dd {
+  margin-bottom: 10px;
+  padding-left: 0.5em;
+}
+
+
+/* PC向けスタイル */
+@media screen and (min-width:768px) {
+
+  /* 全体設定 */
+  /* 文字 */
+  body {
+    /* pc版基準：20px */
+    font-size: clamp(1rem, 0.6592rem + 0.692vw, 1.25rem);
+  }
+
+
+  /* コンテンツ */
+  h1 {
+    font-size: 70px;
+  }
+
+  /* 円形文字 */
+  .circleText {
+    width: 60%;
+  }
+
+  /* メニュー */
+
+  /* ボタン */
+  nav #menu_btn {
+    width: 70px;
+    height: 70px;
+    top: 15px;
+    right: 15px;
+  }
+
+  /* リスト */
+  nav ul {
+    top: 100px;
+    right: 20px;
+  }
+
+  nav li {
+    margin-bottom: 10px;
+  }
+
+  nav a {
+    padding: 10px;
+    font-size: 40px;
+  }
+
+
+  /* メイン */
+
+  main {
+    /* mainにmax-widthがつくのでこちらのpaddingで調整 */
+    padding: 5%;
+  }
+
+  /* セクションの背景色と余白 */
+  #profile_sec,
+  #works_sec,
+  #skill_sec,
+  #contact_sec {
+    max-width: 1080px;
+    margin: 0 auto 120px;
+    padding: 30px 5% 50px;
+  }
+
+  /* 共通大見出し */
+  h2 {
+    /* PC版基準：50px */
+    font-size: clamp(2.25rem, 1.0571rem + 2.4221vw, 3.125rem);
+    margin-bottom: 20px;
+  }
+
+  h2::after {
+    transform: translate(0, -17px);
+  }
+
+
+  /* profile_sec */
+
+  /* 余白 */
+  #profile_sec p {
+    max-width: 800px;
+    margin: 0 auto 20px;
+  }
+
+  #profile_sec .my_icon img {
+    width: 20%;
+  }
+
+  /* 名前部分 */
+  #profile_sec h3 {
+    /* pc版基準：30px */
+    font-size: clamp(1.5rem, 0.9888rem + 1.0381vw, 1.875rem);
+    margin-bottom: 20px;
+  }
+
+  #profile_sec h3 span {
+    /* pc版基準：20px */
+    font-size: clamp(1rem, 0.6592rem + 0.692vw, 1.25rem);
+  }
+
+  /* works_sec */
+
+  /* フレックス */
+  #works_sec .flex_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  /* 奇数時用数合わせ※偶数時は消すこと！！！！！！！！！ */
+  #works_sec .flex_wrap::after {
+    content: "";
+    display: block;
+    width: 40%;
+    min-width: 280px;
+  }
+
+  /* 余白とアイテムサイズ */
+  #works_sec section {
+    margin-bottom: 80px;
+    width: 40%;
+    min-width: 280px;
+  }
+
+  /* 見出し */
+  #works_sec h3 {
+    /* pc版基準：30px */
+    font-size: clamp(1.5rem, 0.9888rem + 1.0381vw, 1.875rem);
+    margin-bottom: 15px;
+    /* リフォーム会社のホームページのタイトルが長いので */
+    white-space: nowrap;
+  }
+
+  /* 余白 */
+  #works_sec section p {
+    margin-bottom: 15px;
+  }
+
+  /* 画像の高さ指定 */
+  #works_sec section p:nth-of-type(1) {
+    height: 250px;
+  }
+
+  /* 文章の高さ指定（横並び時は揃えた方が綺麗） */
+  #works_sec section p:nth-of-type(2) {
+    min-height: 100px;
+  }
+
+
+  /* skill_sec */
+
+  /* フレックス */
+  #skill_sec .flex_wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  /* 余白とアイテムサイズ */
+  #skill_sec section {
+    margin-bottom: 80px;
+    width: 40%;
+    min-width: 280px;
+  }
+
+  /* 見出し */
+  #skill_sec h3 {
+    /* pc版基準：34px */
+    font-size: clamp(1.75rem, 1.2388rem + 1.0381vw, 2.125rem);
+    margin-bottom: 20px;
+  }
+
+  /* 各項目のマーク */
+  #skill_sec section h3::before {
+    /* PC版基準：40px */
+    width: clamp(2.188rem, 1.738rem + 0.912vw, 2.5rem);
+    height: clamp(2.188rem, 1.738rem + 0.912vw, 2.5rem);
+    margin-right: 12px;
+  }
+
+  /* 箇条書き中身 */
+  #skill_sec li {
+    margin-bottom: 5px;
+  }
+
+  /* チェックマーク */
+  #skill_sec li::before {
+    /* PC版基準：28px */
+    height: clamp(1.563rem, 1.293rem + 0.547vw, 1.75rem);
+    width: clamp(1.563rem, 1.293rem + 0.547vw, 1.75rem);
+    display: block;
+    margin-right: 5px;
+  }
+
+  /* 注釈文字 */
+  #skill_sec p {
+    /* PC版18px基準 */
+    font-size: clamp(0.9375rem, 0.6819rem + 0.519vw, 1.125rem);
+  }
+
+  /* contact_sec */
+
+  /* フレックス */
+  #contact_sec form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-around;
+    max-width: 750px;
+    margin: 0 auto;
+  }
+
+  #contact_sec .item {
+    width: 40%;
+  }
+
+  #contact_sec .input {
+    width: 60%;
+  }
+
+  /* 余白 */
+  #contact_sec p {
+    margin-bottom: 20px;
+  }
+
+  /* 必須の四角 */
+  #contact_sec span {
+    padding: 5px;
+    margin-right: 5px;
+    /* PC版基準：15px */
+    font-size: clamp(0.75rem, 0.4944rem + 0.519vw, 0.9375rem);
+  }
+
+  /* 入力欄 */
+  #contact_sec input {
+    height: 40px;
+    padding: 5px;
+    line-height: 1.2;
+    margin-bottom: 0px;
+  }
+
+  #contact_sec textarea {
+    height: 120px;
+    padding: 5px;
+    line-height: 1.2;
+    margin-bottom: 0px;
+  }
+
+  /* 送信ボタン */
+  #contact_sec button {
+    width: 20%;
+    height: 60px;
+  }
+
+
+  /* フッター */
+  footer {
+    padding: 50px;
+  }
+
+  /* ローディング画面 */
+  #loading .typing {
+    font-size: 70px;
+  }
+
+  /* モーダル */
+
+  .modal {
+    padding: 4%;
+    height: 80vh;
+  }
+
+  .modal .flex_wrap {
+    display: flex;
+    justify-content: center;
+    gap: 70px;
+  }
+
+  .modal h3 {
+    /* pc版基準：34px */
+    font-size: clamp(1.75rem, 1.2388rem + 1.0381vw, 2.125rem);
+    margin-bottom: 20px;
+  }
+
+  .modal .flex_wrap div {
+    margin-bottom: 0px;
+    width: 40%;
+  }
+
+  .modal dl {
+    width: 40%;
+  }
+
+  .modal dd {
+    padding-left: 1em;
+  }
+}
