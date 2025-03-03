@@ -891,7 +891,7 @@ body {
   /* モーダル */
 
   .modal {
-    height: 80vh;
+    height: 100vh;
   }
 
   .modal .close_button {
